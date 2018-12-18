@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "ClientModifView";
+}
+
+<h2>ClientModifView</h2>
+
+    <div class="alert alert-info text-center">
+        <h2>Modifier le client @ViewData["idClient"]</h2>
+    </div>
+    <form action="ClientView" method="post">
+        <label for="nom">Nom :</label>
+        <input type="hidden" name="idClient" value="@ViewData["idClient"]" />
+        <input type="text" name="nom" value="@ViewData["nomClient"]" required />
+        <input type="submit" name="Modifier" class="btn-primary" value="Modifier">
+    </form>

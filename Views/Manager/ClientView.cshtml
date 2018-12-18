@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "ClientView";
+}
+
+<h2>ClientView</h2>
+<div class="alert alert-info text-center">
+    <h2>Ajout d'un client</h2>
+</div>
+<form action="ClientView" method="post">
+    <label for="nom">Nom :</label>
+    <input type="text" name="nom" required />
+    <input type="submit" name="Ajouter" class="btn-primary" value="Ajouter">
+</form>
+<br />
+<div class="alert alert-info text-center">
+    <h2>Affichage / Suppression / Modification</h2>
+</div>
+<table>
+    <tr>
+        <th>idClient</th>
+        <th>nom</th>
+        <th>Supprimer</th>
+        <th>Modifier</th>
+    </tr>
+    @foreach (ModeleEnCouchePlanning.Models.Client client in ViewData["Clients"] as List<ModeleEnCouchePlanning.Models.Client>)
+    {
+    <tr>
+        <td>@client.idClient</td>
+        <td>@client.nom</td>
+        <td class="text-center"><a href='ClientView?idClient=@client.idClient'><i class="fas fa-trash"></i></a></td>
+        <td class="text-center"><a href='ClientModifView?idClient=@client.idClient'><i class="fas fa-cog"></i></a></td>
+    </tr>
+    }
+</table>

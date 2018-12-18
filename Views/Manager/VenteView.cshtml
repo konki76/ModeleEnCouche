@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "VenteView";
+}
+
+<h2>VenteView</h2>
+
+<div class="alert alert-info text-center">
+    <h2>Ajout d'une catégorie</h2>
+</div>
+<form action="VenteView" method="post">
+    <label for="marchandise">marchandise :</label>
+    <input type="text" name="marchandise" required />
+    <label for="nbVente">nombre :</label>
+    <input type="text" name="nbVente" value="1" required />
+    <select name="idCategVente">
+        @foreach (ModeleEnCouchePlanning.Models.CategVente categ in ViewData["CategVentes"] as List<ModeleEnCouchePlanning.Models.CategVente>)
+        {
+            <option value="@categ.idCategVente">@categ.libelleCategVente</option>
+        }
+    </select>
+    <input type="submit" name="Ajouter" class="btn-primary" value="Ajouter">
+</form>
+<br />
+<div class="alert alert-info text-center">
+    <h2>Affichage / Suppression / Modification</h2>
+</div>
+<table>
+    <tr>
+        <th>idVente</th>
+        <th>nbVente</th>
+        <th>marchandise</th>
+        <th>categorie</th>
+        <th>Supprimer</th>
+        <th>Modifier</th>
+    </tr>
+    @foreach (ModeleEnCouchePlanning.Models.Vente vente in ViewData["Ventes"] as List<ModeleEnCouchePlanning.Models.Vente>)
+    {
+    <tr>
+        <td>@vente.idVente</td>
+        <td>@vente.nbVente</td>
+        <td>@vente.marchandise</td>
+        <td>@vente.idCategVente</td>
+        <td class="text-center"><a href='VenteView?idVente=@vente.idVente'><i class="fas fa-trash"></i></a></td>
+        <td class="text-center"><a href='VenteModifView?idVente=@vente.idVente'><i class="fas fa-cog"></i></a></td>
+    </tr>
+    }
+</table>

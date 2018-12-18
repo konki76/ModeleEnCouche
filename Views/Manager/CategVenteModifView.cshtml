@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "CategVenteModifView";
+}
+
+<h2>CategVenteModifView</h2>
+
+<div class="alert alert-info text-center">
+    <h2>Modifier la catégorie @ViewData["idCategVente"]</h2>
+</div>
+<form action="CategVenteView" method="post">
+    <label for="idCategVente">Libelle :</label>
+    <input type="hidden" name="idCategVente" value="@ViewData["idCategVente"]" />
+    <input type="text" name="libelleCategVente" value="@ViewData["libelleCategVente"]" required /><br />
+    <input type="submit" name="Modifier" class="btn-primary" value="Modifier">
+</form>
